@@ -1,0 +1,487 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+* {
+    font-family: 'Josefin Sans', sans-serif;
+    box-sizing: border-box;
+    color: #ffffff;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+/*Responsive: Mobile*/
+@media screen and (max-device-width: 1279px){
+    
+    body{
+        display: flex;
+        flex-direction: column;
+        margin: 5vh 20vh;
+        background-color: #121212;
+        font-size: 3em;
+        width: 100vh;
+        justify-content: center;
+    }
+    .details{
+        margin: 5vh;
+    }
+    .details div{
+        margin: 10vh 0;
+    }
+    .left{
+        height: 100vh;
+    }
+    .left div{
+        margin: 10vh auto;
+    }
+    .right{
+        margin-top: 100vh;
+    }
+    hr{
+        width: 100%;
+        margin: 0;
+        height: 3px;
+        background-color: #ffffff;
+        border-radius: 25px;
+    }
+    
+    /*Details Section*/
+    .details{
+        display: block;
+    }
+    
+    /*Type Section*/
+    .type {
+        margin: 1vh auto;
+    }
+    .type:first-of-type{
+        margin-bottom: -5vh;
+    }
+    .type h2{
+        margin-bottom: -10%;
+    }
+    .payment-option{
+        position: inherit;
+        display: flex;
+        width: 100vh;
+    }
+    .payment-option label{
+        display: inline-flex;
+        width: 20vh;
+        margin: 0 1em;
+    }
+    .payment-option input[type="radio"]{
+        transform: scale(5);
+        background-color: #F05454;
+    }
+    .payment-option p{
+        vertical-align: auto;
+        margin-top: 1.5em;
+        margin-left: 1em;
+    }
+    
+    /*Transfer Section*/
+    .transfer{
+        text-align: center;
+    }
+    .amount{
+        color: #F05454;
+    }
+    .bank-num, .bank-name{
+        font-size: 1.75em;
+        margin: 0.5em 0 250vh;
+    }
+    .bank-name{
+        margin-top: 1em;
+    }
+    .bank-num{
+        margin-top: -250%;
+    }
+    
+    /*Confirm Section*/
+    .confirm{
+        margin-left: 10%;
+        padding: 1em 10em;
+        border: 1px solid #ffffff;
+        border-radius: 10px;
+        text-decoration: none;
+    }
+    .confirm:hover{
+        background-color: #F05454;
+        border: 1px solid #F05454;
+    }
+    .disclaimer{
+        margin-top: 5%;
+        margin-left: 12.5%;
+        width: 75%;
+        font-size: 0.9em;
+        text-align: justify;
+        color: gray;
+    }
+    .back-button{
+        position: relative;
+        margin-top: 5%;
+        height: 7.5vh;
+        text-decoration: none;
+        font-size: 1.25em;
+    }
+    .back-button a{
+        text-decoration: none;
+    }
+    .back-button a:hover{
+        color: #F05454;
+    }
+    
+    /*Place Section*/
+    .place *{
+        margin: auto 1em;
+    }
+    .place{
+        display: flex;
+        flex-direction: column;
+        width: 100vh;
+        text-align: center;
+    }
+    .place img{
+        background-size: cover;
+        width: 160px;
+        height: 120px;
+        border-radius: 10px;
+    }
+    .place p{
+        width: 100vh;
+    }
+    .place-info{
+        padding-right: 16vh;
+    }
+    .top-text{
+        margin-bottom: 5vh;
+        font-weight: bold;
+    }
+    
+    /*Voucher Section*/
+    .voucher{
+        display: block;
+        padding: 0.1em 0;
+    }
+    
+    .voucher input[type="text"]{
+        outline: none !important;
+        border: 2px solid gray;
+        background-color: transparent;
+        padding: 0.25em 0;
+        width: 50%;
+        border-radius: 5px;
+        margin-right: 5%;
+        color: gray;
+        font-size: 1.25em;
+    }
+    .voucher input[type="text"]:focus{
+        outline: none !important;
+        border: 2px solid #F05454;
+        background-color: #ffffff;
+    }
+    .voucher a{
+        padding: 0.75em 3em;
+        border: 1px solid #ffffff;
+        border-radius: 10px;
+        text-decoration: none;
+    }
+    .voucher a:hover{
+        background-color: #F05454;
+        border-color: #F05454;
+    }
+    
+    /*Price Section*/
+    .price:not(.price-info){
+        margin: -2em 0;
+    }
+    .price{
+        display: flex;
+        flex-direction: row;
+    }
+    .price-info{
+        width: max-content;
+    }
+    .price-info-text{
+        padding-right: 40vh;
+    }
+    
+    /*Total Section*/
+    .total{
+        display: flex;
+        margin: auto 0;
+        height: 10vh;
+    }
+    .total-text{
+        margin-top: 1.5%;
+        padding-right: 39vh;
+    }
+    .total-price{
+        margin-top: 0.5%;
+        font-size: 1.25em;
+        font-weight: bold;
+    }
+}
+
+
+
+
+
+/*Responsive: Desktop*/
+@media screen and (min-device-width: 1280px){
+    body{
+        display: flex;
+        margin: 1em;
+        background-color: #121212;
+        height: 100vh;
+        overflow-x: hidden;
+    }
+    .details{
+        margin: 5vh;
+    }
+    .details div{
+        margin: 5vh 0;
+    }
+    .left{
+        height: 100vh;
+    }
+    .left div{
+        margin: 10vh auto;
+    }
+    .right{
+        max-width: 92.5vh;
+    }
+    hr{
+        width: 100%;
+        margin: 0;
+        height: 3px;
+        background-color: #ffffff;
+        border-radius: 25px;
+    }
+    
+    /*Details Section*/
+    .details{
+        display: block;
+    }
+    
+    /*Type Section*/
+    .type {
+        margin: 1vh auto;
+    }
+    .type:first-of-type{
+        margin-bottom: -5vh;
+    }
+    .type h2{
+        margin-bottom: -10%;
+    }
+    .payment-option{
+        position: inherit;
+        display: flex;
+    }
+    .payment-option label{
+        display: inline-flex;
+        width: 25vh;
+        margin: 0 1em;
+    }
+    .payment-option input[type="radio"]{
+        transform: scale(2);
+        background-color: #F05454;
+    }
+    .payment-option p{
+        vertical-align: auto;
+        margin-top: 1.5em;
+        margin-left: 1em;
+    }
+    
+    /*Transfer Section*/
+    .transfer{
+        text-align: center;
+    }
+    .amount{
+        color: #F05454;
+    }
+    .bank-num, .bank-name{
+        font-size: 2em;
+        margin: 0.5em 0;
+    }
+    .bank-name{
+        margin-top: 1em;
+    }
+    .bank-num{
+        margin-bottom: 12.5%;
+    }
+    
+    /*Confirm Section*/
+    .confirm{
+        margin-left: 10%;
+        padding: 1em 10em;
+        border: 1px solid #ffffff;
+        border-radius: 10px;
+        text-decoration: none;
+    }
+    .confirm:hover{
+        background-color: #F05454;
+        border: 1px solid #F05454;
+    }
+    .disclaimer{
+        margin-top: 5%;
+        margin-left: 12.5%;
+        width: 75%;
+        font-size: 0.9em;
+        text-align: justify;
+        color: gray;
+    }
+    .back-button{
+        position: relative;
+        margin-top: 5%;
+        height: 7.5vh;
+        text-decoration: none;
+        font-size: 1.25em;
+    }
+    .back-button a{
+        text-decoration: none;
+    }
+    .back-button a:hover{
+        color: #F05454;
+    }
+    
+    /*Place Section*/
+    .place *{
+        margin: auto 1em;
+    }
+    .place{
+        display: flex;
+    }
+    .place img{
+        background-size: cover;
+        width: 120px;
+        height: 90px;
+        border-radius: 10px;
+    }
+    .place p{
+        width: 30vh;
+    }
+    .place-info{
+        padding-right: 16vh;
+    }
+    .top-text{
+        width: max-content;
+        margin-bottom: 5vh;
+        font-weight: bold;
+    }
+    
+    /*Voucher Section*/
+    .voucher{
+        display: block;
+        padding: 0.1em 0;
+    }
+    
+    .voucher input[type="text"]{
+        outline: none !important;
+        border: 2px solid gray;
+        background-color: transparent;
+        padding: 0.25em 0;
+        width: 50%;
+        border-radius: 5px;
+        margin-right: 5%;
+        color: gray;
+        font-size: 1.25em;
+    }
+    .voucher input[type="text"]:focus{
+        outline: none !important;
+        border: 2px solid #F05454;
+        background-color: #ffffff;
+    }
+    .voucher a{
+        padding: 0.75em 3em;
+        border: 1px solid #ffffff;
+        border-radius: 10px;
+        text-decoration: none;
+    }
+    .voucher a:hover{
+        background-color: #F05454;
+        border-color: #F05454;
+    }
+    
+    /*Price Section*/
+    .price:not(.price-info){
+        margin: -2em 0;
+    }
+    .price{
+        display: flex;
+        flex-direction: row;
+    }
+    .price-info{
+        width: 25vh;
+    }
+    .price-info-text{
+        padding-right: 68vh;
+    }
+    
+    /*Total Section*/
+    .total{
+        display: flex;
+        margin: auto 0;
+        height: 10vh;
+    }
+    .total-text{
+        margin-top: 1.5%;
+        padding-right: 66vh;
+    }
+    .total-price{
+        margin-top: 0.5%;
+        font-size: 1.25em;
+        font-weight: bold;
+    }
+}
+.popup {
+    visibility: hidden;
+    text-align: center;
+    top: 0%;
+    margin: auto;
+    padding: 1em;
+    width: 50vh;
+    display: block;
+    height: 25vh;
+    display: inline-block;
+    flex-direction: row;
+    background-color: #222222;
+    border-radius: 10px;
+    transform: translate(-50%,-50%) scale(0.1);
+    font-size: 1.25em;
+    color: #ffffff;
+    visibility: hidden;
+    transition: transform 0.3s;
+  }
+  
+  .open-popup{
+    visibility: visible;
+    position: absolute;
+    top: 35%;
+    right: 25%;
+    transform: translate(-50%,-50%) scale(1);
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .popup a {
+    position: relative;
+    text-decoration: none;
+    display: inline;
+    height: 10%;
+    top: 20%;
+    text-align: center;
+    margin: 5em auto 1em;
+    padding: 10px 20px;
+    background-color: #F05454;
+    color: #fff;
+    border: 0;
+    outline: none;
+    font-size: 1em;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  }
+
+
+
