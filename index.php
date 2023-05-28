@@ -1,3 +1,14 @@
+<?php
+session_start();
+unset($_SESSION['previous_page']);
+if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === "logged") {
+
+  $previousPage = isset($_SESSION['previous_page']) ? $_SESSION['previous_page'] : "homepage.php";
+  header("Location: " . $previousPage);
+  exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -107,7 +118,7 @@
                 <div id="aldi" class="creator">
                     <img src="img/aldi.jpg" alt="foto aldi">
                     <h3>Aldi Fandiya Akbar</h3>
-                    <h4>2151502001110</h4>
+                    <h4>215150200111022</h4>
                 </div> 
                 <div id="alfan" class="creator">
                     <img src="img/alfan.jpg" alt="foto alfan">

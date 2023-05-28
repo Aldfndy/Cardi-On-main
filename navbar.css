@@ -1,0 +1,98 @@
+/* Desktop View */
+    /*Navigation Bar*/
+    #navbar{
+        position: fixed;
+        display: flex;
+        width: 100%;
+        top: 0;
+        padding: 1.25em;
+        vertical-align: middle;
+        background-color: #121212;
+        z-index: 1;
+    }
+    #logo{
+        margin-top: 0.75%;
+        width: 40px;
+        height: 40px;
+        vertical-align: middle;
+    }
+    .nav-button{
+        margin: auto 1em;
+        width: 50vh;
+        font-size: 1.2em;
+        color: #ffffff;
+        text-decoration: none;
+    }
+    .nav-button:hover{
+        color: #F05454;
+    }
+    .name{
+        width: 40vh;
+        font-size: 1.25em;
+        color: #ffffff !important;
+    }
+    .email{
+        margin-right: 10.5%;
+    }
+    .left{
+        margin-left: 10%;
+    }
+    .right{
+        display: flex;
+        font-size: 0.1em;
+        max-width: 50vw;
+        margin: auto;
+    }
+    .right img{
+        width:50px;
+        height: 50px;
+        margin-left: 5%;
+    }
+    .right p{
+        margin-top: 5%;
+        font-size: 1em;
+    }
+    .dropbtn {
+        background-color: transparent;
+        color: white;
+        padding: 12px 16px;
+        font-size: 1em;
+        border: none;
+    }
+    .dropdown{
+        display: none;
+    }
+    .dropdown-profile {
+        position: relative;
+    }
+    .dropdown-profile .right{
+        height: max-content;
+    }
+    .dropdown-profile .profile-name{
+        margin: auto;
+    }
+    .dropdown-profile .dropdown-content {
+        display: none;
+        position: absolute;
+        right: 1vw;
+        background-color: #ffffff;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 999;
+    } 
+    .dropdown-profile .dropdown-content a {
+        width: 22.5vh;
+        color: black;
+        padding: 0.5em 1.5em;
+        font-size: 1em;
+        text-decoration: none;
+        display: block;
+    }  
+    .dropdown-profile .dropdown-content a:hover {
+        background-color: #F05454;
+    }  
+    .dropdown-profile:hover .dropdown-content{
+        display: block;
+    }
+    /* .dropdown-profile:hover .dropbtn {
+        background-color: #F05454;
+    } */

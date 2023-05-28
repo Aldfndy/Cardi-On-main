@@ -1,104 +1,120 @@
-
 <?php
+//require 'function.php';
+
 session_start();
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== "logged") {
     session_destroy();
     header("Location: login.php");
-  exit();
+    exit();
 }
 
-$conect = mysqli_connect("localhost","root","","cardion");
-$result = mysqli_query($conect,"SELECT * FROM sport");
-$row = mysqli_fetch_assoc($result);
 
+
+
+if (isset($_POST['booknow'])) {
+    $conn = mysqli_connect('localhost', 'root', '', 'cardion');
+    $name = $_POST["sport"];
+    $location = $_POST["location"];
+    $result1 = mysqli_query($conn, "SELECT * FROM sport WHERE locationn LIKE '%$location%'");
+    $result2 = mysqli_query($conn, "SELECT * FROM sport WHERE kategori LIKE '%$name%'");
+
+    $xx = 0;
+    $temp = "";
+
+
+
+
+}
 
 ?>
 
-<!DOCTYPE html
-<html lang="en">
-  <head>
+<!DOCTYPE html <html lang="en">
+
+<head>
     <title>Search</title>
     <link rel="stylesheet" href="catalogue.css">
     <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="navbar.css">
+    <meta name="viewport" content="width=device-width">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
     <link rel="icon" href="img/cardion-red.png" type="image/png">
     <meta charset="utf-8">
-  </head>
+</head>
 
-  <body>
+<body>
     <nav id="navbar">
         <img src="img/cardion-red.png" id="logo">
         <a class="nav-button name">Cardi-On!</a>
-        <div class="dropdown">
-            <button class="dropbtn">
-                <img src="img/account-logo.png">
-            </button>
-            <div class="dropdown-content">
-                <a href="#home">Home</a>
-                <a href="#pop">Popular</a>
-                <a href="#social">Contact</a>
-                <a href="login.php">Sign Out</a>
-            </div>
-        </div>
-        <a class="nav-button left" href="homepage.php">Home</a>
-        <a class="nav-button current" href="catalogue.php">Search</a>
-        <a class="nav-button email">Details</a>
+        <a class="nav-button left" href="#"></a>
+        <a class="nav-button current" href="#"></a>
+        <a class="nav-button email">
         <div class="dropdown-profile">
             <button class="dropbtn right">
-                <p><?= $_SESSION['email'] ?></p>
-                <img src="img/account-logo.png">
+                <p class="profile-name">
+                    <?= $_SESSION['name'] ?>
+                </p>
+                <?php
+                $profile_img = $_SESSION['profile_img'];
+                if ($profile_img && !isset($_SESSION['google_login'])) {
+                    echo '<img src="usr_img/' . $profile_img . '">';
+                } elseif ($profile_img && isset($_SESSION['google_login'])) {
+                    echo '<img src="' . $profile_img . '">';
+                } else {
+                    echo '<img src="img/account-logo.png">';
+                }
+                ?>
             </button>
             <div class="dropdown-content">
                 <a href="#">Account</a>
                 <a href="#">Order History</a>
-                <a href="login.php">Sign Out</a>
+                <a href="logout.php">Sign Out</a>
             </div>
         </div>
     </nav>
 
     <section id="search">
-        <h2 class="fade-up">Sports Center Around Here</h2><section class="search-sports fade-up">    
-            <a class="places" href="booking.php">
-                <img src="img/ubsc.jpg">
-                <h3>UB Sports Center</h3>
-                <p class="rate">
-                    &#9733 &#9733 &#9733 &#9733 &#9733
-                </p>
-                <p class="location">Jl. Terusan Cibogo No.1 Penanggungan, Kec. Klojen, Kota Malang, Jawa Timur</p>
-                <p class="type">Badminton, Fitness, Tennis, etc. </p>
-            </a>
-    
+        <h2 class="fade-up">Sports Center Around Here</h2>
+        <section class="search-sports fade-up">
 
-            <a class="places" href="#">
-                <img src="img/sm-futsal.jpg">
-                <h3>SM Futsal</h3>
-                <p class="rate">
-                    &#9733 &#9733 &#9733 &#9733 &# 
-                </p>
-                <p class="location">Jalan Sudimoro Utara, Mojolangu, Lowokwaru, Mojolangu, Kec. Lowokwaru, Kota Malang, Jawa Timur</p>
-                <p class="type">Indoor Football</p>
-            </a>
-            <a class="places" href="#">
-                <img src="img/gor-pertamina.jpg">
-                <h3>Gor Pertamina UB</h3>
-                <p class="rate">
-                    &#9733 &#9733 &#9733 &#9733 &#9734
-                </p>
-                <p class="location">Jl. Veteran Malang, Ketawanggede, Kec. Lowokwaru, Kota Malang, Jawa Timur</p>
-                <p class="type">Badminton, Basketball, etc.</p>
-            </a> 
+
+            <?php while ($row1 = mysqli_fetch_assoc($result1)): ?>
+                    <?php if ($xx < 3 && $row1["kategori"] == $name): ?>
+                        <a class="places" href="booking.php?id=<?= $row1["name"] ?>">
+                            <img src="<?= $row1["img"] ?>">
+                            <h3>
+                                <?= $row1["name"] ?>
+                            </h3>
+                            <p class="rate">
+                                <?= $row1["rating"] ?>
+                            </p>
+                            <p class="location">
+                                <?= $row1["locationn"] ?>
+                            </p>
+                        </a>
+                        <?php 
+                        $_SESSION["nameSport"] = $row1["name"];
+                        $_SESSION["imgSport"] = $row1["img"];
+                        $_SESSION["ratingSport"] = $row1["rating"];
+                        $_SESSION["locationSport"] = $row1["locationn"];
+                        $_SESSION["descSport"] = $row1["desc"];                        
+                         ?>
+                        <?php $xx++; ?>
+                    <?php endif ?>  
+                    
+            <?php endwhile ?>
         </section>
 
         <section id="pages">
             <a class="page-num" href="#"><span class="current">1<span></p>
-            <a class="page-num" href="#">2</a>
-            <a class="page-num" href="#">3</a>
-            <a class="page-num" href="#">4</a>
-            <a class="page-num" href="#">5</a>
-            <a class="page-num" href="#">...</a>
+                        <a class="page-num" href="#">2</a>
+                        <a class="page-num" href="#">3</a>
+                        <a class="page-num" href="#">4</a>
+                        <a class="page-num" href="#">5</a>
+                        <a class="page-num" href="#">...</a>
         </section>
-        
+
 
 
     </section>
@@ -123,5 +139,6 @@ $row = mysqli_fetch_assoc($result);
         <p class="address">Jl. Veteran Malang, Ketawanggede, Kec. Lowokwaru Kota Malang, Jawa Timur.</p>
         <p>Email: cardion@gmail.com</p>
     </footer>
-  </body>
+</body>
+
 </html>

@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== "logged") {
+    header("Location: login.php");
+    exit();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -88,7 +97,7 @@
             <p class="total-price">Rp 160.000</p>
         </div>
     </section>
-    <script src="trainee.js"></script>
+    <!-- <script src="trainee.js"></script> -->
   </body>
 
 

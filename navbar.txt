@@ -1,0 +1,27 @@
+<nav id="navbar">
+    <img src="img/cardion-red.png" id="logo">
+    <a class="nav-button name">Cardi-On!</a>
+    <a class="nav-button left" href="homepage.php">Home</a>
+    <a class="nav-button current" href="catalogue.php">Search</a>
+    <a class="nav-button email">Details</a>
+    <div class="dropdown-profile">
+        <button class="dropbtn right">
+            <p class="profile-name">
+                <?= $_SESSION['name'] ?>
+            </p>
+            <?php
+            $profile_img = $_SESSION['profile_img'];
+            if ($profile_img) {
+                echo '<img src="usr_img/' . $profile_img . '">';
+            } else {
+                echo '<img src="img/account-logo.png">';
+            }
+            ?>
+        </button>
+        <div class="dropdown-content">
+            <a href="#">Account</a>
+            <a href="#">Order History</a>
+            <a href="logout.php">Sign Out</a>
+        </div>
+    </div>
+</nav>

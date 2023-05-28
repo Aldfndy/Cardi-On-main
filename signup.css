@@ -6,211 +6,7 @@
     font-size: 14px;
 }
 
-
-/*Responsive Mobile*/
-@media screen and (max-device-width: 1279px){
-  body {
-    width: 60%;
-    height: 10vh;
-    margin: 0;
-    color: #ffffff;
-    font-size: 3em;
-  }
-  .bg{
-    width: 100%;
-    background-image: linear-gradient(180deg, rgba(240, 84, 84, 0.4) 0%,
-    rgba(18,18,18, 1) 80%), url(./img/swimming-coach-standing-by-pool-checking-swimming-records-holding-clipboard.png);
-    background-size: cover;
-    background-attachment: fixed;
-    left: 1em;
-  }
-  h1{
-    width: 100vh;
-    font-size: 3em;
-    margin-top: 100%;
-    margin-bottom: -10%;
-    text-align: center;
-    z-index: 0;
-  }
-
-  p {
-    font-size: 1.5em;
-    text-align: left;
-    margin-top: 0.5em;
-    margin-bottom: 0.1em;
-    margin-left: 2em;
-  }
-  
-  form {
-    width: 80%;
-    margin: 20vh auto 0;
-    padding-bottom: 2em;
-    scale: 5;
-  }
-  
-  fieldset {
-    border: none;
-    padding: 2rem 0;
-  }
-
-  fieldset{
-    padding-top: 0em;
-    padding-bottom: 0.5em;
-  }
-  
-  label, input {
-    font-size: 3em;
-  }
-  input{
-    font-size: 1em;
-  }
-  label {
-    display: block;
-    margin: 1.5em auto;
-  }
-
-  input,
-  textarea,
-  select{
-    margin: 10px 0 0 0;
-    width: 100%;
-  }
-  
-  input, textarea {
-    background-color: #ffffff;
-    padding: 0.25em 0;
-    border-style: none;
-    border-radius: 2.5px;
-    color: #000000;
-    width: 80vh;
-  }
-
-  .img-form{
-    color: #ffffff;
-    background-color: transparent;
-  }
-
-  .inline {
-    width: 100%;
-    max-width: 5%;
-    margin: 0em 1em 0 5em;
-    font-size: 1em;
-    vertical-align: middle;
-  }
-
-  .terms{
-    width: 80%;
-    margin-top: 1.5em;
-    margin-left: 15%;
-  }
-
-  input[type="submit"],a{
-    display: block;
-    margin: 0.25em 0.5em;
-    height: 3em;
-    font-size: 1.1em;
-    background-color:transparent;
-    border: 2px solid #ffffff;
-    text-align: center;
-    color: #ffffff;
-    min-width: 50px;
-  }
-
-  .age-form{
-    display: block;
-    width: 5%;
-    margin-right: 10em;
-    width: 5em;
-  }
-
-  .experience{
-    display: block;
-    width: 5em;
-  }
-
-  a{
-    background-color: rgba(0,0,0, 0.4);
-    width: 40%;
-    margin: auto;
-    margin-top: 75%;
-    padding-top: 0.75em;
-    border-radius: 5px;
-    height: unset;
-    min-height: 2em;
-    font-size: 1.15em;
-    text-decoration: none;
-  }
-
-
-
-  a:visited{
-    color: #ffffff;
-  }
-
-  a:focus,a:hover{
-    color: #F05454;
-    border-color: #F05454;
-  }
-  .flex{
-    width: 100%;
-    margin-top: 0.5em;
-  }
-
-  .card{
-    width: 100vh;
-    height: 100vh;
-    padding: 17.5% 0 3% 1%;
-    margin-left: -1em;
-    margin-top: -10em;
-    z-index: -1;
-  }
-
-
-  .title{
-    width: 100%;
-    margin: 15% auto 0;
-    font-size: 3em;
-    text-align: center;
-  }
-
-  .desc{
-    width: 80%;
-    font-size: 1.1em;
-    margin: 1.5em auto 0;
-    text-align: justify;
-  }
-
-  input[type="file"] {
-    padding: 1px;
-    font-size: 1em;
-  }
-
-  input:focus, textarea:focus{
-    outline: 3px solid #F05454;
-}
-.flex-left{
-  height: max-content;
-}
-.flex-right{
-  position: absolute;
-  width: 100vh;
-  top: 140vh;
-  margin: auto;
-  font-size: 2.5em;
-}
-.flex-right a{
-  vertical-align: middle;
-}
-  #back{
-    background-color: unset;
-    border-style: none;
-    margin: 17.5% auto auto;
-    font-size: 3em;
-  }
-}
-
 /* Responsive Desktop */
-@media screen and (min-device-width: 1280px){
   body {
     position: absolute;
     width: 60%;
@@ -273,7 +69,7 @@
 
   label {
     display: block;
-    margin: 1rem 0;
+    margin: 1em 0;
   }
 
   input,
@@ -282,6 +78,11 @@
     margin: 10px 0 0 0;
     width: 100%;
     min-height: 1.5em;
+  }
+
+  div #gender {
+    width: 100px;
+    height: 30px;
   }
   
   input, textarea {
@@ -384,7 +185,7 @@
   .flex-left {
     position:absolute;
     width: 50%;
-    height: 92%;
+    height: 100vh;
   }
 
   .flex-right{
@@ -424,12 +225,11 @@
     background-color: unset;
     border-style: none;
     margin: auto;
-    margin-left: -15%;
-    margin-top: -5%;
+    margin-top: 10%;
+    margin-left: -12.5%;
     font-size: 1.4em;
   }
 
-}
 .popup {
   visibility: hidden;
   text-align: center;

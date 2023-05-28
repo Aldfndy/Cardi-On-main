@@ -29,7 +29,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== "logged") {
                 <a href="#home">Home</a>
                 <a href="#pop">Popular</a>
                 <a href="#social">Contact</a>
-                <a href="login.php">Sign Out</a>
+                <a href="logout.php">Sign Out</a>
             </div>
         </div>
         <a class="nav-button left" href="catalogue.php">Back</a>
@@ -37,13 +37,25 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== "logged") {
         <a class="nav-button email current">Instructor</a>
         <div class="dropdown-profile">
             <button class="dropbtn right">
-                <p><?= $_SESSION['email'] ?></p>
-                <img src="img/account-logo.png">
+                <p><?= $_SESSION['name'] ?></p>
+                <p class="profile-name">
+                    <?= $_SESSION['name'] ?>
+                </p>
+                <?php
+                $profile_img = $_SESSION['profile_img'];
+                if ($profile_img && !isset($_SESSION['google_login'])) {
+                    echo '<img src="usr_img/' . $profile_img . '">';
+                } elseif ($profile_img && isset($_SESSION['google_login'])) {
+                    echo '<img src="' . $profile_img . '">';
+                } else {
+                    echo '<img src="img/account-logo.png">';
+                }
+                ?>
             </button>
             <div class="dropdown-content">
                 <a href="#">Account</a>
                 <a href="#">Order History</a>
-                <a href="login.php">Sign Out</a>
+                <a href="logout.php">Sign Out</a>
             </div>
         </div>
     </nav>

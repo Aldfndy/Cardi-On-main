@@ -17,8 +17,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($result && mysqli_num_rows($result) > 0) {
       $logged_in = 'logged';
-      $_SESSION['email'] = $email;
+      $user = mysqli_fetch_assoc($result);
+      $_SESSION['name'] = $user['name'];
       $_SESSION['logged_in'] = $logged_in;
+      $_SESSION['profile_img'] = $user['profile_img'];
       $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
       header("Location: homepage.php");
       exit();
@@ -36,4 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $_SESSION['error_message'] = $error_message;
 header("Location: login.php");
 exit();
+
+
 ?>

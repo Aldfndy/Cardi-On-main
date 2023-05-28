@@ -3,7 +3,7 @@ function submitForm() {
   let formData = new FormData(form);
 
   let xhr = new XMLHttpRequest();
-  xhr.open('POST', 'process_form.php');
+  xhr.open('POST', 'signup_handler.php');
 
   xhr.onreadystatechange = function () {
     if (xhr.readyState === XMLHttpRequest.DONE) {

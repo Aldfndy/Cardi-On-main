@@ -1,25 +1,28 @@
-
-<!-- <?php
+<?php
 session_start();
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== "logged") {
     header("Location: login.php");
     exit();
 }
-?> -->
+?>
 
 <!DOCTYPE html>
-<html lang="en"></html>
-  <head>
+<html lang="en">
+
+</html>
+
+<head>
     <title>Home</title>
     <link rel="stylesheet" href="homepage.css">
     <meta name="viewport" content="width=device-width">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
     <link rel="icon" href="img/cardion-red.png" type="image/png">
     <meta charset="utf-8">
-  </head>
+</head>
 
-  <body>
+<body>
     <nav id="navbar">
         <img src="img/cardion-red.png" id="logo">
         <a class="nav-button name">Cardi-On!</a>
@@ -31,7 +34,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== "logged") {
                 <a href="#home">Home</a>
                 <a href="#pop">Popular</a>
                 <a href="#social">Contact</a>
-                <a href="login.php">Sign Out</a>
+                <a href="logout.php">Sign Out</a>
             </div>
         </div>
         <a class="nav-button left" href="#home">Home</a>
@@ -39,8 +42,19 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== "logged") {
         <a class="nav-button email" href="#footer">Contact Us</a>
         <div class="dropdown-profile">
             <button class="dropbtn right">
-                <p><?= $_SESSION['email'] ?></p>
-                <img src="img/account-logo.png">
+                <p class="profile-name">
+                    <?= $_SESSION['name'] ?>
+                </p>
+                <?php
+                $profile_img = $_SESSION['profile_img'];
+                if ($profile_img && !isset($_SESSION['google_login'])) {
+                    echo '<img src="usr_img/' . $profile_img . '">';
+                } elseif ($profile_img && isset($_SESSION['google_login'])) {
+                    echo '<img src="' . $profile_img . '">';
+                } else {
+                    echo '<img src="img/account-logo.png">';
+                }
+                ?>
             </button>
             <div class="dropdown-content">
                 <a href="#">Account</a>
@@ -55,16 +69,25 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== "logged") {
         <form action="catalogue.php" method="POST">
             <label class="select">
                 <p>Location</p>
-                <input type="text" required name="location">
+                <input type="text" required name="name">
             </label>
             <label class="select">
                 <p>Sport</p>
                 <input type="text" required name="sport">
             </label>
+            <div class="date-time">
+                <label class="select">
+                    <p>Select<br>Date</p>
+                    <input type="date" id="date-input" required>
+                </label>
+                <label class="select">
+                    <p>Starting Hour</p>
+                    <input type="time" id="time-input" step="3600" onchange="handleTimeChange(this)" required>
+            </div>
             <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
-            <input type="submit" class="order" value="Book Now" href="catalogue.php">
+            <input type="submit" class="order" value="Book Now" href="catalogue.php" name="booknow">
         </form>
-        
+
     </section>
 
     <section id="pop">
@@ -81,7 +104,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== "logged") {
             <div class="feature">
                 <img src="img/pop-basketball.jpg">
                 <h3>Basketball</h3>
-            </div> 
+            </div>
         </section>
     </section>
 
@@ -106,5 +129,6 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== "logged") {
         <p>Email: cardion@gmail.com</p>
     </footer>
     <script src="homepage.js"></script>
-  </body>
+</body>
+
 </html>

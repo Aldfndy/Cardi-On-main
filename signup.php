@@ -17,7 +17,7 @@ $_SESSION['previous_page'] = $_SERVER['REQUEST_URI'];
 <head>
   <title>Sign Up</title>
   <link rel="stylesheet" href="signup.css" />
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
@@ -27,10 +27,9 @@ $_SESSION['previous_page'] = $_SERVER['REQUEST_URI'];
 
 <body>
   <h1>Sign Up</h1>
-
   <div class="flex card">
     <div class="flex-left">
-      <form action="process_form.php" method="POST" enctype="multipart/form-data">
+      <form action="signup_handler.php" method="POST" enctype="multipart/form-data">
         <fieldset>
           <label>Enter Your Full Name<input type="text" name="name" placeholder="John Doe" required /></label>
           <label>Enter Your Email<input type="email" name="email" placeholder="username@domain.com" required /></label>
@@ -40,16 +39,18 @@ $_SESSION['previous_page'] = $_SERVER['REQUEST_URI'];
           <div class="flex">
             <label>Upload a Profile Picture<input type="file" name="profile" accept="image/*" class="img-form"></label>
           </div>
-          <div class="flex">
-            <label>Age<input type="number" name="age" min="12" max="120" class="age-form" /></label>
+          <div>
+            <label>Select a Gender</label>
+            <select id="gender" name="gender">
+              <option value="">Select</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
           </div>
-          <label>Provide a Bio
-            <textarea name="bio" rows="3" cols="30" placeholder="Enter your bio here..."></textarea>
-          </label>
         </fieldset>
 
         <div class="flex">
-          <a href="account.php" id="back">← Back</a>
+          <a href="index.php" id="back">← Back</a>
         </div>
       </form>
     </div>
@@ -60,7 +61,6 @@ $_SESSION['previous_page'] = $_SERVER['REQUEST_URI'];
         <a href="index.php" id="home-link">Home</a>
         <a href="login.php" id="login-link">Login</a>
       </div>
-
     </div>
   </div>
 
