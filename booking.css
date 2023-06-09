@@ -10,13 +10,18 @@
 html{
     scroll-behavior: smooth;
 }
-nav .name{
-    width: 100vw;
+/* Desktop View */
+
+.right img[href="newnav.css"]{
+    width:50px;
+    height: 50px;
+    margin-left: 5%;
+}
+.right p[href="newnav.css"]{
+    margin-top: 5%;
+    font-size: 1em;
 }
 
-
-
-/*Desktop View*/
     /*Thumbnail Section*/
     .location-image img{
         width: 100%;
@@ -75,6 +80,7 @@ nav .name{
         height: 60px;
     }
 
+
     /*Review Section*/
     .review-box {
         display: flex;
@@ -97,28 +103,24 @@ nav .name{
     .more {
         margin: 1vh 0 1vh 17.5vh;
     }
-
-    /*Social Section*/
+    .social-text{
+        margin-bottom: -10%;
+    }
     .location-social{
         display: flex;
-        margin: auto 5em;
-        margin-top: none;
-    }
-    .location-social div{
-        display: flex;
-        align-items: center;
-    }
-    .location-social p{
-        margin: auto 0.5em;
     }
     .location-social img{
         max-width: 40px;
         max-height: 40px;
     }
+    .location-social  img:nth-of-type(2){
+        max-height: 30px;
+    }
 
-    /*Date Section*/
+
+    /*Duration Box Section*/
     #body [class="right"] {
-        border: 1px solid #ffffff;
+        border: 3px solid #ffffff;
         border-radius: 15px;
         padding: 2em 2em;
         height: fit-content;
@@ -127,75 +129,109 @@ nav .name{
     #body [class="right"] h2 {
         text-align: center;
     }
-    .date{
+    .box-title{
+        margin-top: 5%;
+        font-size: 2.25em;
+    }
+    .hour-selector{
         display: flex;
-        max-width: 90vh;
-        overflow-x: scroll;
+        margin: 10% auto auto;
+        width: 80%;
+        font-size: 1em;
     }
-    .date a{
-        text-align: center;
-        margin: 1em;
-        border: 1px solid #ffffff;
-        padding: 1em;
-        border-radius: 5px;
-        width: 15vh;
+    .hour-selector p{
+        display: inline-flex;
+        margin: auto auto auto 26%;
+        font-size: 1.25em;
     }
-    .date a:active, .date a:hover{
+    .value-button {
+        display: flex;
+        align-items: center;
+        width: 120px;
+        height: 40px;
+        border: 2px solid #ffffff;
         background-color: #F05454;
-    }
-    .date-num{
+        border-radius: 8px;
+      }
+      
+      .minus,
+      .plus {
+        width: 30px;
+        height: 30px;
+        color: white;
+        margin: auto;
         background-color: transparent;
-    }
+        border: none;
+        cursor: pointer;
+        font-size: 1.5em;
+      }
+      .value-button input:hover{
+          color:#ffffff;
+      }
+      
+      .value {
+        margin: auto;
+        width: 50px;
+        text-align: center;
+        border: none;
+        border-left: #ffffff;
+        background-color: #F05454;
+        color: white;
+        font-size: 1.2em;
+      }
+      .duration{
+        margin: auto 5%;
+      }
+      .cost{
+        margin: 15% auto auto;
+        display: flex;
+        width: 80%;
+        font-size: 1em;
+      }
+      .cost h3{
+        width: 50%;
+      }
+      .cost p{
+        text-align:end;
+        width: 50%;
+        font-size: 1.5em;
+        margin-top: 0;
+        margin-bottom: -5%;
+      }
+      .disclaimer{
+        display: block;
+        margin: auto;
+        width: 80%;
+        text-align: end;
+        font-size: 0.75em;
+      }
     .red{
          background-color: #F05454;
     }
-    /*Schedule Section*/
-    .hours{
-        margin: 1em 0 2em;
-        border: 1px solid #ffffff;
+    a{
+        text-decoration: none;
+    }
+
+    .continue{
+        font-size: 0.75em;
+        display: block;
+        margin: auto auto 5%;
+        width: 80%;
+        height: 80px;
+        border: 2px solid #ffffff;
         border-radius: 5px;
         padding: 1em;
+        background-color: transparent;
     }
-    .hours p{
+    .continue:first-of-type{
+        margin-top: 15%;
+        margin-bottom: none;
+    }
+    .continue p{
         margin: 0.25em 0;
     }
-    .hours:active, .hours:hover{
+    .continue:active, .continue:hover{
         background-color: #F05454;
-    }
-    .book-now{
-        position: inherit;
-        justify-content: center;
-        display:block;
-        margin: 5vh 1% 2.5vh;
-        max-width: unset;
-        justify-content: center;
-        align-items: center;
-        border: 1px solid #F05454;
-        color: #F05454;
-        background-color: transparent;
-        border-radius: 5px;
-        padding: 1em 8.25em;
-        font-weight: bold;
-        text-decoration: none;
-    }
-    .book-now:last-of-type{
-        padding: 1em 2em;
-        width: 100%;
-        text-align: center;
-        font-size: 1em;
-    }
-    .book-now:hover{
-        text-decoration: none;
-        background-color: #F05454;
-        color: #ffffff;
-    }
-    .schedules{
-        max-height: 100vh;
-        overflow-y: scroll;
-        margin-bottom: 10vh;
-    }
-    .date::-webkit-scrollbar, .schedules::-webkit-scrollbar{
-        background-color: transparent;
     }
 
     /*Footer*/
@@ -239,29 +275,4 @@ nav .name{
         width: 30%;
     }
 
-/*Animations*/
-.fade-up{
-    -webkit-animation: fade-up 2s both;
-}
-
-@keyframes fade-up{
-    0%{
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    100%{
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes focus{
-    0%{
-        transform: translateY(0);
-        opacity: 1;
-    }
-    100%{
-        transform: translateY(-10px);
-        opacity: 1;
-    }
-}
+    

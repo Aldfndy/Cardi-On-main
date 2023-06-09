@@ -9,21 +9,20 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== "logged") {
 }
 
 
-
-
 if (isset($_POST['booknow'])) {
     $conn = mysqli_connect('localhost', 'root', '', 'cardion');
     $name = $_POST["sport"];
     $location = $_POST["location"];
+    $_SESSION["sport_inst"] = $_POST["sport"];
+    $_SESSION["hour"] = $_POST["hours"];
     $result1 = mysqli_query($conn, "SELECT * FROM sport WHERE locationn LIKE '%$location%'");
     $result2 = mysqli_query($conn, "SELECT * FROM sport WHERE kategori LIKE '%$name%'");
-
     $xx = 0;
     $temp = "";
-
-
-
-
+}
+if (is_null($result1)) {
+    header("Location: homepage.php");
+    exit();
 }
 
 ?>
@@ -41,6 +40,10 @@ if (isset($_POST['booknow'])) {
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
     <link rel="icon" href="img/cardion-red.png" type="image/png">
     <meta charset="utf-8">
+    <script>
+        history.replaceState({}, document.title, window.location.href);
+    </script>
+
 </head>
 
 <body>
@@ -50,28 +53,28 @@ if (isset($_POST['booknow'])) {
         <a class="nav-button left" href="#"></a>
         <a class="nav-button current" href="#"></a>
         <a class="nav-button email">
-        <div class="dropdown-profile">
-            <button class="dropbtn right">
-                <p class="profile-name">
-                    <?= $_SESSION['name'] ?>
-                </p>
-                <?php
-                $profile_img = $_SESSION['profile_img'];
-                if ($profile_img && !isset($_SESSION['google_login'])) {
-                    echo '<img src="usr_img/' . $profile_img . '">';
-                } elseif ($profile_img && isset($_SESSION['google_login'])) {
-                    echo '<img src="' . $profile_img . '">';
-                } else {
-                    echo '<img src="img/account-logo.png">';
-                }
-                ?>
-            </button>
-            <div class="dropdown-content">
-                <a href="#">Account</a>
-                <a href="#">Order History</a>
-                <a href="logout.php">Sign Out</a>
+            <div class="dropdown-profile">
+                <button class="dropbtn right">
+                    <p class="profile-name">
+                        <?= $_SESSION['name'] ?>
+                    </p>
+                    <?php
+                    $profile_img = $_SESSION['profile_img'];
+                    if ($profile_img && !isset($_SESSION['google_login'])) {
+                        echo '<img src="usr_img/' . $profile_img . '">';
+                    } elseif ($profile_img && isset($_SESSION['google_login'])) {
+                        echo '<img src="' . $profile_img . '">';
+                    } else {
+                        echo '<img src="img/account-logo.png">';
+                    }
+                    ?>
+                </button>
+                <div class="dropdown-content">
+                    <a href="account-info.php">Account</a>
+                    <a href="history.php">Order History</a>
+                    <a href="logout.php">Sign Out</a>
+                </div>
             </div>
-        </div>
     </nav>
 
     <section id="search">
@@ -80,29 +83,22 @@ if (isset($_POST['booknow'])) {
 
 
             <?php while ($row1 = mysqli_fetch_assoc($result1)): ?>
-                    <?php if ($xx < 3 && $row1["kategori"] == $name): ?>
-                        <a class="places" href="booking.php?id=<?= $row1["name"] ?>">
-                            <img src="<?= $row1["img"] ?>">
-                            <h3>
-                                <?= $row1["name"] ?>
-                            </h3>
-                            <p class="rate">
-                                <?= $row1["rating"] ?>
-                            </p>
-                            <p class="location">
-                                <?= $row1["locationn"] ?>
-                            </p>
-                        </a>
-                        <?php 
-                        $_SESSION["nameSport"] = $row1["name"];
-                        $_SESSION["imgSport"] = $row1["img"];
-                        $_SESSION["ratingSport"] = $row1["rating"];
-                        $_SESSION["locationSport"] = $row1["locationn"];
-                        $_SESSION["descSport"] = $row1["desc"];                        
-                         ?>
-                        <?php $xx++; ?>
-                    <?php endif ?>  
-                    
+                <?php if ($xx < 3 && strcasecmp($row1["kategori"], $name) == 0): ?>
+                    <a class="places" href="booking.php?id=<?= $row1["name"] ?>">
+                        <img src="<?= $row1["img"] ?>">
+                        <h3>
+                            <?= $row1["name"] ?>
+                        </h3>
+                        <p class="rate">
+                            <?= $row1["rating"] ?>
+                        </p>
+                        <p class="location">
+                            <?= $row1["locationn"] ?>
+                        </p>
+                    </a>
+                    <?php $xx++; ?>
+                <?php endif ?>
+
             <?php endwhile ?>
         </section>
 

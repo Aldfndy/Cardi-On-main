@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+* {
+    font-family: 'Josefin Sans', sans-serif;
+    box-sizing: border-box;
+    color: #ffffff;
+}
+html{
+    scroll-behavior: smooth;
+} 
+
+
+body{
+    margin: 1em;
+    background-color: #121212;
+    overflow-x: hidden;
+}
+h1{
+    margin-top: 3%;
+}
+hr{
+    width: 100%;
+    margin: 2.5% auto;
+    border-color: #F05454;
+}
+section{
+    display: flex;
+}
+div:first-of-type{
+    width: 70%;
+}
+div:first-of-type h2, div:first-of-type p{
+    margin: 1% auto;
+}
+div:first-of-type h2{
+    font-size: 1.5em;
+}
+div:first-of-type p{
+    text-align: end;
+    font-size: 1.25em;
+    font-weight: light;
+    margin-bottom: 2.5%;
+}
+img{
+    margin: 5% 10% 10% 25%;
+    border-radius: 5%;
+    max-width: 210px;
+    max-height: 280px;
+}
+.signout{
+    margin-left: 35%;
+    text-align: center;
+    text-decoration: underline;
+    font-size: 1.25em;
+}
+.back-button{
+    position: fixed;
+    margin-top: 7.5%;
+    margin-left: 0.25%;
+    text-decoration: none;
+    font-size: 1.25em;
+}
+.back-button a{
+    text-decoration: none;
+}
+a:hover{
+    color: #F05454;
+}
+
+    
+    

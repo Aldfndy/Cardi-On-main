@@ -6,7 +6,6 @@
     font-size: 14px;
 }
 
-/* Responsive Desktop */
   body {
     position: absolute;
     width: 60%;
@@ -69,7 +68,7 @@
 
   label {
     display: block;
-    margin: 1em 0;
+    margin: 5% 0 2.5%;
   }
 
   input,
@@ -78,11 +77,6 @@
     margin: 10px 0 0 0;
     width: 100%;
     min-height: 1.5em;
-  }
-
-  div #gender {
-    width: 100px;
-    height: 30px;
   }
   
   input, textarea {
@@ -126,7 +120,9 @@
     color: #ffffff;
     min-width: 50px;
   }
-
+  #gender{
+    width: max-content;
+  }
   .age-form{
     display: block;
     width: 5%;
@@ -183,9 +179,9 @@
   }
 
   .flex-left {
-    position:absolute;
+    position:fixed;
     width: 50%;
-    height: 100vh;
+    height: 92%;
   }
 
   .flex-right{
@@ -222,58 +218,60 @@
 }
 
   #back{
+    position: absolute;
     background-color: unset;
     border-style: none;
     margin: auto;
-    margin-top: 10%;
-    margin-left: -12.5%;
+    margin-left: -15%;
+    margin-top: 5%;
     font-size: 1.4em;
   }
 
-.popup {
-  visibility: hidden;
-  text-align: center;
-  top: 0%;
-  margin: auto;
-  padding: 1em;
-  width: 50vh;
-  display: block;
-  height: 20vh;
-  display: inline-block;
-  flex-direction: row;
-  background-color: #222222;
-  border-radius: 10px;
-  transform: translate(-50%,-50%) scale(0.1);
-  font-size: 1.25em;
-  color: #ffffff;
-  visibility: hidden;
-  transition: transform 0.3s;
-}
-
-.open-popup{
-  visibility: visible;
-  position: absolute;
-  top: 40%;
-  right: 50%;
-  transform: translate(-50%,-50%) scale(1);
-  align-items: center;
-  justify-content: center;
-}
-
-.popup a {
-  position: relative;
-  display: inline;
-  height: 10%;
-  top: 20%;
-  text-align: center;
-  margin: 5em auto 1em;
-  padding: 10px 20px;
-  background-color: #F05454;
-  color: #fff;
-  border: 0;
-  outline: none;
-  font-size: 1em;
-  border-radius: 4px;
-  cursor: pointer;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
-}
+  .popup {
+    visibility: hidden;
+    text-align: center;
+    top: 0%;
+    margin: auto;
+    padding: 1em 0.25em 0.25em;
+    width: 55vh;
+    height: 15vh;
+    font-size: 1em;
+    flex-direction: row;
+    background-color: #222222;
+    border-radius: 10px;
+    transform: translate(-50%,-50%) scale(0.1);
+    font-size: 1em;
+    color: #ffffff;
+    transition: transform 0.3s;
+    z-index: 999;
+  }
+  #popup-message{
+    margin: auto;
+    text-align: center;
+  }
+  .open-popup{
+    visibility: visible;
+    position: relative;
+    left: 80%;
+    transform: translate(-50%,-50%) scale(1);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .popup a {
+    position: relative;
+    display: inline;
+    height: 10%;
+    top: 20%;
+    text-align: center;
+    margin: 5em auto 1em;
+    padding: 10px 20px;
+    background-color: #F05454;
+    color: #fff;
+    border: 0;
+    outline: none;
+    font-size: 1em;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  }

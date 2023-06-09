@@ -33,19 +33,20 @@ $_SESSION['previous_page'] = $_SERVER['REQUEST_URI'];
         <fieldset>
           <label>Enter Your Full Name<input type="text" name="name" placeholder="John Doe" required /></label>
           <label>Enter Your Email<input type="email" name="email" placeholder="username@domain.com" required /></label>
+          <label>Enter Your Phone Number<input type="number" name="phone" placeholder="08xxxxxxxxxx" required /></label>
           <label>Create a New Password<input type="password" name="password" required /></label>
+          
         </fieldset>
         <fieldset>
           <div class="flex">
             <label>Upload a Profile Picture<input type="file" name="profile" accept="image/*" class="img-form"></label>
-          </div>
-          <div>
-            <label>Select a Gender</label>
-            <select id="gender" name="gender">
+            <label>Select a Gender
+            <select id="gender" name="gender" required>
               <option value="">Select</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
             </select>
+          </label>
           </div>
         </fieldset>
 
@@ -55,13 +56,13 @@ $_SESSION['previous_page'] = $_SERVER['REQUEST_URI'];
       </form>
     </div>
     <div class="flex-right">
-      <a type="submit" onclick="submitForm()">Create Account</a>
-      <div class="popup" id="popup">
-        <p id="popup-message"></p>
+      <a type="submit" href="#" onclick="submitForm()">Create Account</a>
+    </div>
+    <div class="popup" id="popup">
+        <p id="popup-message">Your Account has been created</p>
         <a href="index.php" id="home-link">Home</a>
         <a href="login.php" id="login-link">Login</a>
       </div>
-    </div>
   </div>
 
   <script src="signup.js"></script>

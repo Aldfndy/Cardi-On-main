@@ -4,12 +4,15 @@ $mysqli = mysqli_connect("localhost", "root", "", "cardion");
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $email = $_POST['email'];
+    $phone = $_POST['phone'];
     $password = $_POST['password'];
     $gender = $_POST['gender'];
 
     $name = mysqli_real_escape_string($mysqli, $name);
     $email = mysqli_real_escape_string($mysqli, $email);
+    $phone = mysqli_real_escape_string($mysqli, $phone);
     $password = mysqli_real_escape_string($mysqli, $password);
+    
 
     $file = $_FILES['profile'];
     $fileName = $file['name'];
@@ -24,8 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $uploadPath = 'usr_img/' . $randomFileName;
 
         try {
-            $query = "INSERT INTO user (name, email, password, gender, profile_img)
-                      VALUES ('$name', '$email', '$password', '$gender', '$randomFileName')";
+            $query = "INSERT INTO user (name, email, phone, password, gender, profile_img)
+                      VALUES ('$name', '$email', '$phone', '$password', '$gender', '$randomFileName')";
 
             $result = mysqli_query($mysqli, $query);
 

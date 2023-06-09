@@ -6,7 +6,7 @@
   <title>Under Construction</title>
   <style>
     body {
-      background-image: url("img/hafizh.jpeg");
+      background-image: url("img/con1.png"); */
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
@@ -18,6 +18,7 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      color: #fff;
     }
 
     .container {

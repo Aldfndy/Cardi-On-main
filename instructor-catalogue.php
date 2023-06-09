@@ -4,12 +4,19 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== "logged") {
   header("Location: login.php");
   exit();
 }
+
+$conn = mysqli_connect('localhost', 'root', '', 'cardion');
+$name = $_SESSION["sport_inst"];
+$result = mysqli_query($conn, "SELECT * FROM instructor WHERE categori = '$name'");
+$counter = 0;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <title>Search Instructor</title>
     <link rel="stylesheet" href="instructor-catalogue.css">
+    <link rel="stylesheet" href="navbar.css">
     <meta name="viewport" content="width=device-width">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
@@ -18,78 +25,52 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== "logged") {
   </head>
 
   <body>
-    <nav id="navbar">
+  <nav id="navbar">
         <img src="img/cardion-red.png" id="logo">
         <a class="nav-button name">Cardi-On!</a>
-        <div class="dropdown">
-            <button class="dropbtn">
-                <img src="img/account-logo.png">
-            </button>
-            <div class="dropdown-content">
-                <a href="#home">Home</a>
-                <a href="#pop">Popular</a>
-                <a href="#social">Contact</a>
-                <a href="logout.php">Sign Out</a>
+        <a class="nav-button left" href="#"></a>
+        <a class="nav-button current" href="#"></a>
+        <a class="nav-button email">
+            <div class="dropdown-profile">
+                <button class="dropbtn right">
+                    <p class="profile-name">
+                        <?= $_SESSION['name'] ?>
+                    </p>
+                    <?php
+                    $profile_img = $_SESSION['profile_img'];
+                    if ($profile_img && !isset($_SESSION['google_login'])) {
+                        echo '<img src="usr_img/' . $profile_img . '">';
+                    } elseif ($profile_img && isset($_SESSION['google_login'])) {
+                        echo '<img src="' . $profile_img . '">';
+                    } else {
+                        echo '<img src="img/account-logo.png">';
+                    }
+                    ?>
+                </button>
+                <div class="dropdown-content">
+                    <a href="account-info.php">Account</a>
+                    <a href="history.php">Order History</a>
+                    <a href="logout.php">Sign Out</a>
+                </div>
             </div>
-        </div>
-        <a class="nav-button left" href="catalogue.php">Back</a>
-        <a class="nav-button" href="booking.php">Details</a>
-        <a class="nav-button email current">Instructor</a>
-        <div class="dropdown-profile">
-            <button class="dropbtn right">
-                <p><?= $_SESSION['name'] ?></p>
-                <p class="profile-name">
-                    <?= $_SESSION['name'] ?>
-                </p>
-                <?php
-                $profile_img = $_SESSION['profile_img'];
-                if ($profile_img && !isset($_SESSION['google_login'])) {
-                    echo '<img src="usr_img/' . $profile_img . '">';
-                } elseif ($profile_img && isset($_SESSION['google_login'])) {
-                    echo '<img src="' . $profile_img . '">';
-                } else {
-                    echo '<img src="img/account-logo.png">';
-                }
-                ?>
-            </button>
-            <div class="dropdown-content">
-                <a href="#">Account</a>
-                <a href="#">Order History</a>
-                <a href="logout.php">Sign Out</a>
-            </div>
-        </div>
     </nav>
 
     <section id="search">
         <h2 class="fade-up">List of Certified Instructors</h2>
         <section class="search-sports fade-up">
-            <a class="places" href="transaction-instructor.php">
-                <img src="img/instructor-1.png">
-                <h3>Michael Simatupang</h3>
-                <p class="rate">
-                    &#9733 &#9733 &#9733 &#9733 &#9733
-                </p>
-                <p class="location">Jl. Pegangsaan Timur No.56, Jakarta Utama</p>
-                <p class="type">Instructor since 2010</p>
-            </a>
-            <a class="places">
-                <img src="img/instructor-2.png">
-                <h3>Johnny Sins</h3>
-                <p class="rate">
-                    &#9733 &#9733 &#9733 &#9733 &#9734
-                </p>
-                <p class="location">Jalan Bendungan Bening No.11, Kecamatan Lowokwaru, Kota Malang</p>
-                <p class="type">Instructor since 2015</p>
-            </a>
-            <a class="places">
-                <img src="img/instructor-3.png">
-                <h3>Carl Johnson</h3>
-                <p class="rate">
-                    &#9733 &#9733 &#9733 &#9734 &#9734
-                </p>
-                <p class="location">Jl. Raya Malang-Surabaya</p>
-                <p class="type">Instructor since 2017</p>
-            </a> 
+            <?php while ($row = mysqli_fetch_assoc($result)):?>
+                <?php if($counter < 3) :?>
+                <a class="places" href="transaction.php?is=asasdas">
+                    <img src="<?= $row["img"] ?>">
+                    <h3><?= $row["name"] ?></h3>
+                    <p class="rate">
+                        <?= $row["rating"] ?>
+                    </p>
+
+                </a>
+                <?php $counter++;?>
+                <?php endif ?>
+            <?php endwhile ?>
         </section>
 
         <section id="pages">

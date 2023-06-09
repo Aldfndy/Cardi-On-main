@@ -20,6 +20,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== "logged") {
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
     <link rel="icon" href="img/cardion-red.png" type="image/png">
     <meta charset="utf-8">
+
 </head>
 
 <body>
@@ -57,8 +58,8 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== "logged") {
                 ?>
             </button>
             <div class="dropdown-content">
-                <a href="#">Account</a>
-                <a href="#">Order History</a>
+                <a href="account-info.php">Account</a>
+                <a href="history.php">Order History</a>
                 <a href="logout.php">Sign Out</a>
             </div>
         </div>
@@ -66,10 +67,10 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== "logged") {
 
     <section id="home" class="home-bg">
         <h1>LET'S DO SPORT</h1>
-        <form action="catalogue.php" method="POST">
+        <form action="catalogue.php" method="POST" id="myform" autocomplete="off">
             <label class="select">
                 <p>Location</p>
-                <input type="text" required name="name">
+                <input type="text" required name="location">
             </label>
             <label class="select">
                 <p>Sport</p>
@@ -82,7 +83,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== "logged") {
                 </label>
                 <label class="select">
                     <p>Starting Hour</p>
-                    <input type="time" id="time-input" step="3600" onchange="handleTimeChange(this)" required>
+                    <input name="hours" type="time" id="time-input" step="3600" onchange="handleTimeChange(this)" required>
             </div>
             <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
             <input type="submit" class="order" value="Book Now" href="catalogue.php" name="booknow">
